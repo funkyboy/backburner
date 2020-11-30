@@ -59,7 +59,7 @@ module Backburner
       # Invoke after perform hook
       @hooks.invoke_hook_events(job_name, :after_perform, *args)
     rescue => e
-      @hooks.invoke_hook_events(job_name, :on_failure, e, *args)
+      @hooks.invoke_hook_events(job_name, :on_failure, task.id, e, *args)
       raise e
     end
 
